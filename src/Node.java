@@ -1,4 +1,3 @@
-
 public class Node {
 
     int key;// qui  va contenir la valeur du noeud

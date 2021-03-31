@@ -59,11 +59,12 @@ public class ARN {
 
     public static void main(String args[]) throws sizeNotCorrectException {
         ARN seq1 = new ARN("ATCGGCTCGA");
-        // seq1.setMatching("((------))");
+        seq1.setMatching("((------))");
         System.out.println(seq1);
         ARN seq2 = new ARN("ATCGGCACGA");
-        // seq2.setMatching("((------))");
+        seq2.setMatching("((------))");
         System.out.println(seq1.equals(seq2));
+        Arbre tree = new Arbre();
 
     }
 
