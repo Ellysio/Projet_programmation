@@ -1,16 +1,21 @@
-
 public class Node {
 
-    int key;// qui  va contenir la valeur du noeud
-    Node  left;
-    Node  right;
+    // Attributes
+    private String key;
+    private Node left_child;
+    private Node right_child;
 
-    public Node (int key){
-
+    // Constructors
+    public Node(String key, Node left_child, Node right_child){
         this.key = key;
-        this.left = null;
-        this.right = null;
-
+        this.left_child = left_child;
+        this.right_child = right_child;
     }
+
+    public Node(String key){
+        this(key,null,null);
+    }
+
+
 
 }

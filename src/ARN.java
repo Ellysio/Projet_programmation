@@ -64,13 +64,13 @@ public class ARN {
 
     public static void main(String args[]) throws SizeNotCorrectException, MatchingNotCorrectException {
         ARN seq1 = new ARN("ATCGGCTCGA");
-        seq1.setMatching(")(------()");
+        // seq1.setMatching(")(------()");
         System.out.println(seq1);
-        ARN seq2 = new ARN("ATCGGCACGA");
+        // ARN seq2 = new ARN("ATCGGCACGA");
         // seq2.setMatching("((------))");
         // System.out.println(seq1.equals(seq2));
 
-        System.out.println(MatchingNotCorrectException.MatchingIssue(seq1.getMatching()));
+        // System.out.println(MatchingNotCorrectException.MatchingIssue(seq1.getMatching()));
 
     }
 

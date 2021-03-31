@@ -2,24 +2,24 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class Arbre {
-    Node root;
+    Noeud root;
 
     public Arbre() {
         this.root = null;
     }
 
     public Arbre(int key) {
-        root = new Node(key);
+        root = new Noeud(key);
     }
 
     // affichage de l'arbre :
-    void printNodes(Node root, int start, int end) {
+    void printNodes(Noeud root, int start, int end) {
         if (root == null) {
             return;
         }
-        Queue<Node> queue = new LinkedList<Node>();
+        Queue<Noeud> queue = new LinkedList<Noeud>();
         queue.add(root);
-        Node current = null; // le noeud en cours
+        Noeud current = null; // le noeud en cours
         int level = 0;// le niveau ou on est dans l'arbre
         // parcourir l'arbre
         while (!queue.isEmpty()) {// while list is not empty
