@@ -1,26 +1,27 @@
-public class Tree {
+public class BinaryTree {
 
     // Attributes
     private String key;
-    private Tree left_child;
-    private Tree right_child;
+    private BinaryTree left_child;
+    private BinaryTree right_child;
 
     // Constructors
-    public Tree(String key, Tree left_child, Tree right_child){
+    public BinaryTree(String key, BinaryTree left_child, BinaryTree right_child){
         this.key = key;
         this.left_child = left_child;
         this.right_child = right_child;
     }
 
-    public Tree(String key){
+    public BinaryTree(String key){
         this(key,null,null);
     }
 
-    public Tree(){
+    public BinaryTree(){
         this(null,null,null);
     }
 
     // Methods
+    /** @return A boolean which is equal to one if the tree is null, zero otherwise */
     public boolean isEmpty(){
         if (this == null){
             return true;
@@ -30,21 +31,21 @@ public class Tree {
         }
     }
 
-    public void putLeft(Tree tree){
+    public void putLeft(BinaryTree tree){
         this.left_child = tree;
     }
 
-    public void putLeftIfAbsent(Tree tree){
+    public void putLeftIfAbsent(BinaryTree tree){
         if (this.left_child == null){
             this.putLeft(tree);
         }
     }
 
-    public void putRight(Tree tree){
+    public void putRight(BinaryTree tree){
         this.right_child = tree;
     }
 
-    public void putRightIfAbsent(Tree tree){
+    public void putRightIfAbsent(BinaryTree tree){
         if (this.left_child == null){
             this.putRight(tree);
         }
@@ -64,26 +65,36 @@ public class Tree {
         this.left_child = null;
     }
 
-    public void rightLeft(){
+    public void deleteRight(){
         this.right_child = null;
     }
 
-    // public int height();
-    // public boolean containsKey(String key);
-
-
-
-
+    /** @return The height of the tree (levels number) */
+    public int height(){
+        System.out.println(this.key);
+        if (this.left_child == null && this.right_child == null){
+            return 1;
+        }
+        else if (this.left_child == null){
+            return (1 + this.right_child.height());
+        }
+        else if (this.right_child == null){
+            return (1 + this.left_child.height());
+        }
+        else {
+            return (1 + Math.max(this.left_child.height(),this.right_child.height()));
+        }
+    }
 
     public String getKey(){
         return this.key;
     }
 
-    public Tree getLeftChild(){
+    public BinaryTree getLeftChild(){
         return this.left_child;
     }
 
-    public Tree getRightChild(){
+    public BinaryTree getRightChild(){
         return this.right_child;
     }
 
@@ -118,9 +129,9 @@ public class Tree {
     }
 
     public static void main(String[] args) {
-    Tree n1 = new Tree("n1",
-              new Tree("n2", new Tree("n4"), new Tree("n5", new Tree("n7"), new Tree("n8"))),
-              new Tree("n3", new Tree("n6",null, new Tree("n9", new Tree("n10"),new Tree("n11"))),null));
+    BinaryTree n1 = new BinaryTree("n1",
+              new BinaryTree("n2", new BinaryTree("n4"), new BinaryTree("n5", new BinaryTree("n7"), new BinaryTree("n8"))),
+              new BinaryTree("n3", new BinaryTree("n6",null, new BinaryTree("n9", new BinaryTree("n10"),new BinaryTree("n11"))),null));
     System.out.println(n1.getLeftChild().getLeftChild().getKey());
     System.out.println();
     n1.prefix();
@@ -129,8 +140,9 @@ public class Tree {
     System.out.println();
     n1.infix();
     System.out.println();
-    Tree n3 = null;
+    BinaryTree n3 = null;
     System.out.println(n3);
+    System.out.println("profondeur = " + n1.height());
 
     }
 
