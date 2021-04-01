@@ -128,21 +128,48 @@ public class BinaryTree {
         System.out.print(this.key + " ");
     }
 
+    /**
+     * The binary tree must be an arithmetic tree.
+     */
+    public void expressionPath(){
+        if (this != null){
+            if (this.left_child != null && this.right_child != null){
+                System.out.print("(");
+            }
+            if (this.left_child != null){
+                this.left_child.expressionPath();
+            }
+            System.out.print(this.key);
+            if (this.right_child != null){
+                this.right_child.expressionPath();
+            }
+            if (this.left_child != null && this.right_child != null){
+                System.out.print(")");
+            }
+        }
+    }
+
     public static void main(String[] args) {
-    BinaryTree n1 = new BinaryTree("n1",
+
+        BinaryTree n1 = new BinaryTree("n1",
               new BinaryTree("n2", new BinaryTree("n4"), new BinaryTree("n5", new BinaryTree("n7"), new BinaryTree("n8"))),
               new BinaryTree("n3", new BinaryTree("n6",null, new BinaryTree("n9", new BinaryTree("n10"),new BinaryTree("n11"))),null));
-    System.out.println(n1.getLeftChild().getLeftChild().getKey());
-    System.out.println();
-    n1.prefix();
-    System.out.println();
-    n1.suffix();
-    System.out.println();
-    n1.infix();
-    System.out.println();
-    BinaryTree n3 = null;
-    System.out.println(n3);
-    System.out.println("profondeur = " + n1.height());
+        System.out.println(n1.getLeftChild().getLeftChild().getKey());
+        System.out.println();
+        n1.prefix();
+        System.out.println();
+        n1.suffix();
+        System.out.println();
+        n1.infix();
+        System.out.println();
+        BinaryTree n3 = null;
+        System.out.println(n3);
+        System.out.println("profondeur = " + n1.height());
+
+        BinaryTree leftB = new BinaryTree("+", new BinaryTree("a"), new BinaryTree("*", new BinaryTree("3"), new BinaryTree("y")));
+        BinaryTree rightB = new BinaryTree("*", new BinaryTree("2"), new BinaryTree("b"));
+        BinaryTree B = new BinaryTree("-", leftB, rightB);
+        B.expressionPath();
 
     }
 
