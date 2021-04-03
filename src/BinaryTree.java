@@ -23,7 +23,7 @@ public class BinaryTree {
     // Methods
     /** @return A boolean which is equal to one if the tree is null, zero otherwise */
     public boolean isEmpty(){
-        if (this == null){
+        if (this.key == null && this.right_child == null && this.left_child == null){
             return true;
         }
         else {
@@ -69,9 +69,24 @@ public class BinaryTree {
         this.right_child = null;
     }
 
+    /** @return The number of elements of the tree */
+    public int count(){
+        if (this.left_child == null && this.right_child == null){
+            return 1;
+        }
+        else if (this.left_child == null){
+            return (1 + this.right_child.count());
+        }
+        else if (this.right_child == null){
+            return (1 + this.left_child.count());
+        }
+        else {
+            return (1 + this.left_child.count() + this.right_child.count());
+        }
+    }
+
     /** @return The height of the tree (levels number) */
     public int height(){
-        System.out.println(this.key);
         if (this.left_child == null && this.right_child == null){
             return 1;
         }
@@ -165,11 +180,17 @@ public class BinaryTree {
         BinaryTree n3 = null;
         System.out.println(n3);
         System.out.println("profondeur = " + n1.height());
+        System.out.println("nombre d'éléments = " + n1.count());
 
         BinaryTree leftB = new BinaryTree("+", new BinaryTree("a"), new BinaryTree("*", new BinaryTree("3"), new BinaryTree("y")));
         BinaryTree rightB = new BinaryTree("*", new BinaryTree("2"), new BinaryTree("b"));
         BinaryTree B = new BinaryTree("-", leftB, rightB);
         B.expressionPath();
+
+        BinaryTree T = new BinaryTree();
+        System.out.println("\nEst vide :" + T.isEmpty());
+
+
 
     }
 
