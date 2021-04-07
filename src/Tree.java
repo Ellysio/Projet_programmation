@@ -52,15 +52,11 @@ public class Tree {
     }
 
 
-
-
-
-
     public static void main(String args[]){
 
-        Tree b = new Tree("b", new Tree("e", null, new Tree ("f", null, new Tree ("g", null, new Tree ("h")))), null);
         Tree c = new Tree("c",null,new Tree("d",new Tree("i", new Tree("j",null, new Tree ("k")),null),null));
-        Tree T = new Tree("a",b,c);
+        Tree b = new Tree("b", new Tree("e", null, new Tree ("f", null, new Tree ("g", null, new Tree ("h")))),c);
+        Tree T = new Tree("a",b,null);
         T.prefix();
         System.out.println();
         T.suffix();
