@@ -12,6 +12,7 @@ public class Tree {
         this.next_sibling = next_sibling;
     }
 
+
     public Tree(String key){
         this(key,null,null);
     }
