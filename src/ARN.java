@@ -5,9 +5,12 @@ public class ARN {
     private String matching;
 
     // Constructors
-    public ARN(String sequence, String matching) throws sizeNotCorrectException {
+    public ARN(String sequence, String matching) throws SizeNotCorrectException, MatchingNotCorrectException {
         if (sequence.length() != matching.length()){
-            throw new sizeNotCorrectException();
+            throw new SizeNotCorrectException();
+        }
+        else if (MatchingNotCorrectException.MatchingIssue(matching)){
+            throw new MatchingNotCorrectException();
         }
         else {
             this.sequence = sequence;
@@ -29,9 +32,12 @@ public class ARN {
         return this.matching;
     }
 
-    public void setMatching(String matching) throws sizeNotCorrectException {
+    public void setMatching(String matching) throws SizeNotCorrectException, MatchingNotCorrectException {
         if (this.sequence.length() != matching.length()){
-            throw new sizeNotCorrectException();
+            throw new SizeNotCorrectException();
+        }
+        else if (MatchingNotCorrectException.MatchingIssue(matching)){
+            throw new MatchingNotCorrectException();
         }
         else {
             this.matching = matching;
@@ -55,16 +61,24 @@ public class ARN {
         }
         return result;
     }
+    // methode pour obtenir l'arbre à partir d'un appariement:
+    public String getTreefrommatching(){
 
+    return null ;
+    }
+    public String getMatchingfromtree(){
+        return null;
+    }
 
-    public static void main(String args[]) throws sizeNotCorrectException {
+    public static void main(String args[]) throws SizeNotCorrectException, MatchingNotCorrectException {
         ARN seq1 = new ARN("ATCGGCTCGA");
         seq1.setMatching("((------))");
         System.out.println(seq1);
         ARN seq2 = new ARN("ATCGGCACGA");
         seq2.setMatching("((------))");
         System.out.println(seq1.equals(seq2));
-        Arbre tree = new Arbre();
+
+        System.out.println(MatchingNotCorrectException.MatchingIssue(seq1.getMatching()));
 
     }
 
