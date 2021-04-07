@@ -79,7 +79,10 @@ public class ARN {
         System.out.println(seq1.equals(seq2));
 
         System.out.println(MatchingNotCorrectException.MatchingIssue(seq1.getMatching()));
-
+        Tree T=new Tree(5);
+        T.AddNodes(2);
+        T.AddNodes(6);
+        System.out.println(T);
     }
 
 }
