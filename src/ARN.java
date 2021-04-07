@@ -61,28 +61,17 @@ public class ARN {
         }
         return result;
     }
-    // methode pour obtenir l'arbre à partir d'un appariement:
-    public String getTreefrommatching(){
-
-    return null ;
-    }
-    public String getMatchingfromtree(){
-        return null;
-    }
 
     public static void main(String args[]) throws SizeNotCorrectException, MatchingNotCorrectException {
         ARN seq1 = new ARN("ATCGGCTCGA");
-        seq1.setMatching("((------))");
+        // seq1.setMatching(")(------()");
         System.out.println(seq1);
-        ARN seq2 = new ARN("ATCGGCACGA");
-        seq2.setMatching("((------))");
-        System.out.println(seq1.equals(seq2));
+        // ARN seq2 = new ARN("ATCGGCACGA");
+        // seq2.setMatching("((------))");
+        // System.out.println(seq1.equals(seq2));
 
-        System.out.println(MatchingNotCorrectException.MatchingIssue(seq1.getMatching()));
-        Tree T=new Tree(5);
-        T.AddNodes(2);
-        T.AddNodes(6);
-        System.out.println(T);
+        // System.out.println(MatchingNotCorrectException.MatchingIssue(seq1.getMatching()));
+
     }
 
 }

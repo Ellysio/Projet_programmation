@@ -1,36 +1,21 @@
-public class Node  {
-  private int keys;
-  Node  left;
-  Node  right;
+public class Node {
 
-    public Node (int keys, Node  left, Node  right) {
-     this(keys);
-     this.left=left;
-     this.right=right;
+    // Attributes
+    private String key;
+    private Node left_child;
+    private Node right_child;
 
-
-
+    // Constructors
+    public Node(String key, Node left_child, Node right_child){
+        this.key = key;
+        this.left_child = left_child;
+        this.right_child = right_child;
     }
 
-    public Node(int keys) {
-        this.keys=keys;
+    public Node(String key){
+        this(key,null,null);
     }
 
-    public  int getKeys(){
-        return  keys;
-    }
-    public Node getLeft(){
-        return left;
-    }
-    public Node  getRight(){
-        return  right;
-    }
-    public void setLeft(Node left ){
-        this.left=left;
-    }
-     public void setRight(Node right){
-        this.right=right;
-     }
 
 
 }
