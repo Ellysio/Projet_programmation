@@ -31,4 +31,44 @@ public class Tree {
         }
     }
 
+    public void prefix(){
+        System.out.print(this.key + " ");
+        if (this.first_child != null) {
+            this.first_child.prefix();
+        }
+        if (this.next_sibling != null) {
+            this.next_sibling.prefix();
+        }
+    }
+
+    public void suffix(){
+        if (this.first_child != null) {
+            this.first_child.suffix();
+        }
+        System.out.print(this.key + " ");
+        if (this.next_sibling != null) {
+            this.next_sibling.suffix();
+        }
+    }
+
+
+
+
+
+
+    public static void main(String args[]){
+
+        Tree b = new Tree("b", new Tree("e", null, new Tree ("f", null, new Tree ("g", null, new Tree ("h")))), null);
+        Tree c = new Tree("c",null,new Tree("d",new Tree("i", new Tree("j",null, new Tree ("k")),null),null));
+        Tree T = new Tree("a",b,c);
+        T.prefix();
+        System.out.println();
+        T.suffix();
+
+
+
+    }
+
+
+
 }
