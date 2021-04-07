@@ -51,17 +51,6 @@ public class Tree {
             this.next_sibling.suffix();
         }
     }
-    public void width(){
-
-        if (this.first_child != null) {
-            this.first_child.width();
-        }
-        System.out.print(this.key + " ");
-        if (this.next_sibling != null) {
-            this.next_sibling.width();
-        }
-    }
-
 
 
 
@@ -75,7 +64,7 @@ public class Tree {
         T.prefix();
         System.out.println();
         T.suffix();
-        T.width();
+
 
 
 
