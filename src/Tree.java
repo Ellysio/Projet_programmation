@@ -109,7 +109,7 @@ public class Tree {
         return this.first_child;
     }
 
-    public Tree getRightChild(){
+    public Tree getNextSibling(){
         return this.next_sibling;
     }
 
