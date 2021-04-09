@@ -44,6 +44,7 @@ public class ARN {
         }
     }
 
+
     public boolean equals(ARN sequence2){
         return this.matching.equals(sequence2.getMatching());
     }
@@ -61,10 +62,12 @@ public class ARN {
         }
         return result;
     }
+    //methodes :
+
 
     public static void main(String args[]) throws SizeNotCorrectException, MatchingNotCorrectException {
         ARN seq1 = new ARN("ATCGGCTCGA");
-        // seq1.setMatching(")(------()");
+        seq1.setMatching(")(------()");
         System.out.println(seq1);
         // ARN seq2 = new ARN("ATCGGCACGA");
         // seq2.setMatching("((------))");

@@ -16,20 +16,36 @@ public class Tree {
         this(key,null,null);
     }
 
-    public Tree(){
-        this(null,null,null);
+    public Tree(){ this(null,null,null); }
+
+    public Tree getTreeFromMatching (String match){
+        Tree T = new Tree();
+        if (match !=null){
+            for (char ch:match.toCharArray()){
+                if (match.charAt(ch)=='(' || match.charAt(ch)==')' ){
+                    System.out.println(this.key);
+                }else if  (match.charAt(ch)== '-') {
+
+                    System.out.println("");
+                }
+
+            }
+
+
+        }
+        return T ;
     }
 
-    // Methods
+
+
+
+
+
+
+
+
     /** @return A boolean which is equal to one if the tree is null, zero otherwise */
-    public boolean isEmpty(){
-        if (this.key == null && this.first_child == null && this.next_sibling == null){
-            return true;
-        }
-        else {
-            return false;
-        }
-    }
+
 
     public void prefix(){
         System.out.print(this.key + " ");
@@ -52,6 +68,10 @@ public class Tree {
     }
 
 
+
+
+
+
     public static void main(String args[]){
 
         Tree c = new Tree("c",null,new Tree("d",new Tree("i", new Tree("j",null, new Tree ("k")),null),null));
@@ -60,6 +80,11 @@ public class Tree {
         T.prefix();
         System.out.println();
         T.suffix();
+        System.out.println();
+        T.getTreeFromMatching(")(------()");
+
+
+
 
 
 
