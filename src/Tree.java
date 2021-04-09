@@ -11,7 +11,6 @@ public class Tree {
         this.first_child = first_child;
         this.next_sibling = next_sibling;
     }
-
     public Tree(String key){
         this(key,null,null);
     }
@@ -35,6 +34,8 @@ public class Tree {
         }
         return T ;
     }
+
+
 
 
 
