@@ -152,7 +152,7 @@ public class BinaryTree {
                 System.out.print("(");
             }
             if (this.left_child != null){
-                this.left_child.expressionPath();
+              this.left_child.expressionPath();
             }
             System.out.print(this.key);
             if (this.right_child != null){

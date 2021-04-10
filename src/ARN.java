@@ -1,8 +1,15 @@
+import java.util.ArrayList;
+
 public class ARN {
+    /** the inheritance  is used here to inherit the atrributes and methods
+     * of the class Tree  which will be used in some methods here such getTreeFromMatching
+     * and getMatchingFromTree
+     */
 
     // Attributes
     private String sequence;
     private String matching;
+    private Tree Tree;
 
     // Constructors
     public ARN(String sequence, String matching) throws SizeNotCorrectException, MatchingNotCorrectException {
@@ -62,18 +69,21 @@ public class ARN {
         }
         return result;
     }
-    //methodes :
+
+
+
 
 
     public static void main(String args[]) throws SizeNotCorrectException, MatchingNotCorrectException {
         ARN seq1 = new ARN("ATCGGCTCGA");
-        seq1.setMatching(")(------()");
-        System.out.println(seq1);
+        seq1.setMatching("((------))");
+        //System.out.println(seq1);
         // ARN seq2 = new ARN("ATCGGCACGA");
         // seq2.setMatching("((------))");
         // System.out.println(seq1.equals(seq2));
 
         // System.out.println(MatchingNotCorrectException.MatchingIssue(seq1.getMatching()));
+
 
     }
 
