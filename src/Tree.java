@@ -11,42 +11,45 @@ public class Tree {
         this.first_child = first_child;
         this.next_sibling = next_sibling;
     }
+
     public Tree(String key){
         this(key,null,null);
     }
 
-    public Tree(){ this(null,null,null); }
-
-    public Tree getTreeFromMatching (String match){
-        Tree T = new Tree();
-        if (match !=null){
-            for (char ch:match.toCharArray()){
-                if (match.charAt(ch)=='(' || match.charAt(ch)==')' ){
-                    System.out.println(this.key);
-                }else if  (match.charAt(ch)== '-') {
-
-                    System.out.println("");
-                }
-
-            }
-
-
-        }
-        return T ;
+    public Tree(){
+        this(null,null,null);
     }
 
-
-
-
-
-
-
-
-
-
-
+    // Methods
     /** @return A boolean which is equal to one if the tree is null, zero otherwise */
+    public boolean isEmpty(){
+        if (this.key == null && this.first_child == null && this.next_sibling == null){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 
+    /** @return A boolean which is equal to one if there is not child, zero otherwise */
+    public boolean notChild(){
+        if (this.first_child == null){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    /** @return A boolean which is equal to one if there is not next sibling, zero otherwise */
+    public boolean notSibling(){
+        if (this.next_sibling == null){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 
     public void putFirstChild(Tree tree){
         this.first_child = tree;
@@ -150,11 +153,6 @@ public class Tree {
         }
     }
 
-
-
-
-
-
     public static void main(String args[]){
 
         Tree c = new Tree("c",null,new Tree("d",new Tree("i", new Tree("j",null, new Tree ("k")),null),null));
@@ -165,16 +163,12 @@ public class Tree {
         T.suffix();
         System.out.println("\n" + "Taille : " + T.count());
         System.out.println("Profondeur : " + T.height());
-        System.out.println();
-        T.getTreeFromMatching(")(------()");
 
-
-
+        // Création d'un arbre de structure secondaire
+        String Structure = "------)";
 
 
 
     }
-
-
 
 }

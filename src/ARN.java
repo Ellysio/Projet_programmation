@@ -24,6 +24,16 @@ public class ARN {
     }
 
     // Methods
+    /** @return A boolean which is equal to one if the tree is null, zero otherwise */
+    public boolean isEmpty(){
+        if (this.sequence == null && this.matching == null){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
     public String getSequence(){
         return this.sequence;
     }
@@ -44,7 +54,6 @@ public class ARN {
         }
     }
 
-
     public boolean equals(ARN sequence2){
         return this.matching.equals(sequence2.getMatching());
     }
@@ -62,12 +71,10 @@ public class ARN {
         }
         return result;
     }
-    //methodes :
-
 
     public static void main(String args[]) throws SizeNotCorrectException, MatchingNotCorrectException {
         ARN seq1 = new ARN("ATCGGCTCGA");
-        seq1.setMatching(")(------()");
+        // seq1.setMatching(")(------()");
         System.out.println(seq1);
         // ARN seq2 = new ARN("ATCGGCACGA");
         // seq2.setMatching("((------))");
