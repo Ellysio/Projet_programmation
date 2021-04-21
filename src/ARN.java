@@ -75,10 +75,10 @@ public class ARN {
 
     public int size(){
         if (this.sequence != null){
-            return this.size();
+            return this.sequence.length();
         }
         else if (this.matching != null){
-            return this.size();
+            return this.matching.length();
         }
         else {
             return 0;
@@ -164,6 +164,26 @@ public class ARN {
         }
     }
 
+    public boolean containsSequence(String sequence){
+        int size = sequence.length();
+        for (int i = 0; i < this.size() - size + 1; i++){
+            if (this.sequence.substring(i,i+size).equals(sequence)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean containsMatching(String matching){
+        int size = matching.length();
+        for (int i = 0; i < this.size() - size + 1; i++){
+            if (this.matching.substring(i,i+size).equals(matching)){
+                return true;
+            }
+        }
+        return false;
+    }
+
     public String getSequence(){
         return this.sequence;
     }
@@ -186,9 +206,10 @@ public class ARN {
 
     public static void main(String args[]) throws SizeNotCorrectException, MatchingNotCorrectException {
         ARN seq1 = new ARN();
-        seq1.setMatching("--()");
-        seq1.setSequence("ATCG");
+        seq1.setMatching("--(---)");
+        seq1.setSequence("ATCGAAA");
         System.out.println(seq1);
+        System.out.println("Contient ? " + seq1.containsMatching("(--)"));
 /*        ARN seq2 = new ARN("TAGC","()--");
         System.out.println(seq1.equalsSequence(seq2));
         System.out.println(seq1.equalsMatching(seq2));
