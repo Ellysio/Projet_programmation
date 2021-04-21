@@ -23,5 +23,8 @@ public class TapStructurePanel extends JPanel {
         this.add(this.textField);
     }
 
+    public JTextField getTextField(){
+        return this.textField;
+    }
 
 }

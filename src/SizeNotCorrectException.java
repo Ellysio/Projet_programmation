@@ -7,7 +7,7 @@ public class SizeNotCorrectException extends Exception {
     }
 
     public SizeNotCorrectException(){
-        super("The size of the sequence and the matching is not equal.");
+        super("The sequence size and the matching size are not equal.");
     }
 
 }
