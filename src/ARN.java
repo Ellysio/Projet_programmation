@@ -54,9 +54,82 @@ public class ARN {
         }
     }
 
-    public boolean equals(ARN sequence2){
-        return this.matching.equals(sequence2.getMatching());
+    public boolean equalsSequence(ARN sequence2){
+        if(this.sequence.equals(sequence2.getSequence())){
+            return true;
+        }
+        else if (this.sequence.length() == sequence2.getSequence().length()){
+            for (int i = 0; i < this.sequence.length(); i++){
+                switch(this.sequence.charAt(i)){
+                    case 'A':
+                        if (sequence2.getSequence().charAt(i) != 'T'){
+                            return false;
+                        }
+                        break;
+                    case 'T':
+                        if (sequence2.getSequence().charAt(i) != 'A'){
+                            return false;
+                        }
+                        break;
+                    case 'C':
+                        if (sequence2.getSequence().charAt(i) != 'G'){
+                            return false;
+                        }
+                        break;
+                    case 'G':
+                        if (sequence2.getSequence().charAt(i) != 'C'){
+                            return false;
+                        }
+                        break;
+                }
+            }
+            return true;
+        }
+        return false;
     }
+
+    public boolean equalsMatching(ARN sequence2){
+        if(this.matching.equals(sequence2.getMatching())){
+            return true;
+        }
+        else if (this.sequence.length() == sequence2.getSequence().length()){
+            int size = this.matching.length();
+            for (int i = 0; i < size; i++) {
+                switch(this.matching.charAt(i)) {
+                    case '-':
+                        if (sequence2.getMatching().charAt(size - i - 1) != '-') {
+                            return false;
+                        }
+                        break;
+                    case '(':
+                        if (sequence2.getMatching().charAt(size - i - 1) != ')') {
+                            return false;
+                        }
+                        break;
+                    case ')':
+                        if (sequence2.getMatching().charAt(size - i - 1) != '(') {
+                            return false;
+                        }
+                        break;
+                }
+            }
+            return true;
+        }
+        return false;
+    }
+
+/*    public boolean equalsMatching(ARN sequence2){
+        if(this.matching.equals(sequence2.getMatching())){
+            return true;
+        }
+        else if (this.sequence.length() == sequence2.getMatching().length()){
+
+            for (int i = 0; i < this.matching.length(); i++){
+
+            }
+        }
+        return false;
+    }*/
 
     public boolean perfectlyEquals(ARN sequence2){
         return this.equals(sequence2) && this.sequence.equals(sequence2.getSequence());
@@ -73,14 +146,12 @@ public class ARN {
     }
 
     public static void main(String args[]) throws SizeNotCorrectException, MatchingNotCorrectException {
-        ARN seq1 = new ARN("ATCGGCTCGA");
+        ARN seq1 = new ARN("ATCG","()--");
         // seq1.setMatching(")(------()");
         System.out.println(seq1);
-        // ARN seq2 = new ARN("ATCGGCACGA");
-        // seq2.setMatching("((------))");
-        // System.out.println(seq1.equals(seq2));
-
-        // System.out.println(MatchingNotCorrectException.MatchingIssue(seq1.getMatching()));
+        ARN seq2 = new ARN("TAGC","()--");
+        System.out.println(seq1.equalsSequence(seq2));
+        System.out.println(seq1.equalsMatching(seq2));
 
     }
 
