@@ -23,8 +23,13 @@ public class ARN {
         this.matching = null;
     }
 
+    public ARN(){
+        this.sequence = null;
+        this.matching = null;
+    }
+
     // Methods
-    /** @return A boolean which is equal to one if the tree is null, zero otherwise */
+    /** @return A boolean which is equal to one if the sequence is null, zero otherwise */
     public boolean isEmpty(){
         if (this.sequence == null && this.matching == null){
             return true;
@@ -42,16 +47,25 @@ public class ARN {
         return this.matching;
     }
 
+    public void setSequence(String sequence) throws SizeNotCorrectException {
+        if (this.matching != null) {
+            if (this.matching.length() != sequence.length()) {
+                throw new SizeNotCorrectException();
+            }
+        }
+        this.sequence = sequence;
+    }
+
     public void setMatching(String matching) throws SizeNotCorrectException, MatchingNotCorrectException {
-        if (this.sequence.length() != matching.length()){
-            throw new SizeNotCorrectException();
+        if (this.sequence != null){
+            if (this.sequence.length() != matching.length()){
+                throw new SizeNotCorrectException();
+            }
+            else if (MatchingNotCorrectException.MatchingIssue(matching)){
+                throw new MatchingNotCorrectException();
+            }
         }
-        else if (MatchingNotCorrectException.MatchingIssue(matching)){
-            throw new MatchingNotCorrectException();
-        }
-        else {
-            this.matching = matching;
-        }
+        this.matching = matching;
     }
 
     public boolean equalsSequence(ARN sequence2){
@@ -92,7 +106,7 @@ public class ARN {
         if(this.matching.equals(sequence2.getMatching())){
             return true;
         }
-        else if (this.sequence.length() == sequence2.getSequence().length()){
+        else if (this.matching.length() == sequence2.getMatching().length()){
             int size = this.matching.length();
             for (int i = 0; i < size; i++) {
                 switch(this.matching.charAt(i)) {
@@ -118,27 +132,27 @@ public class ARN {
         return false;
     }
 
-/*    public boolean equalsMatching(ARN sequence2){
-        if(this.matching.equals(sequence2.getMatching())){
-            return true;
+    public boolean equals(ARN sequence2){
+        if ((this.sequence != null && sequence2.getSequence() != null) && (this.matching != null && sequence2.getMatching() != null)){
+            return (this.equalsSequence(sequence2) && this.equalsMatching(sequence2));
         }
-        else if (this.sequence.length() == sequence2.getMatching().length()){
-
-            for (int i = 0; i < this.matching.length(); i++){
-
-            }
+        else if (this.sequence != null && sequence2.getSequence() != null){
+            return this.equalsSequence(sequence2);
         }
-        return false;
-    }*/
-
-    public boolean perfectlyEquals(ARN sequence2){
-        return this.equals(sequence2) && this.sequence.equals(sequence2.getSequence());
+        else if (this.matching != null && sequence2.getMatching() != null){
+            return this.equalsMatching(sequence2);
+        }
+        else {
+            return false;
+        }
     }
 
     @Override
     public String toString(){
-        String result;
-        result = "sequence : " + this.sequence + "\n";
+        String result = new String();
+        if (this.sequence != null){
+            result += "sequence : " + this.sequence + "\n";
+        }
         if (this.matching != null){
             result += "matching : " + this.matching;
         }
@@ -146,13 +160,14 @@ public class ARN {
     }
 
     public static void main(String args[]) throws SizeNotCorrectException, MatchingNotCorrectException {
-        ARN seq1 = new ARN("ATCG","()--");
-        // seq1.setMatching(")(------()");
+        ARN seq1 = new ARN();
+        seq1.setMatching("----");
+        seq1.setSequence("ATCG");
         System.out.println(seq1);
         ARN seq2 = new ARN("TAGC","()--");
         System.out.println(seq1.equalsSequence(seq2));
         System.out.println(seq1.equalsMatching(seq2));
-
+        System.out.println(seq1.equals(seq2));
     }
 
 }
