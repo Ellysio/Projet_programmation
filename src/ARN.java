@@ -39,14 +39,6 @@ public class ARN {
         }
     }
 
-    public String getSequence(){
-        return this.sequence;
-    }
-
-    public String getMatching(){
-        return this.matching;
-    }
-
     public void setSequence(String sequence) throws SizeNotCorrectException {
         if (this.matching != null) {
             if (this.matching.length() != sequence.length()) {
@@ -68,12 +60,37 @@ public class ARN {
         this.matching = matching;
     }
 
+    public void removeSequence(){
+        this.sequence = null;
+    }
+
+    public void removeMatching(){
+        this.matching = null;
+    }
+
+    public void clear(){
+        this.sequence = null;
+        this.matching = null;
+    }
+
+    public int size(){
+        if (this.sequence != null){
+            return this.size();
+        }
+        else if (this.matching != null){
+            return this.size();
+        }
+        else {
+            return 0;
+        }
+    }
+
     public boolean equalsSequence(ARN sequence2){
         if(this.sequence.equals(sequence2.getSequence())){
             return true;
         }
-        else if (this.sequence.length() == sequence2.getSequence().length()){
-            for (int i = 0; i < this.sequence.length(); i++){
+        else if (this.size() == sequence2.size()){
+            for (int i = 0; i < this.size(); i++){
                 switch(this.sequence.charAt(i)){
                     case 'A':
                         if (sequence2.getSequence().charAt(i) != 'T'){
@@ -106,8 +123,8 @@ public class ARN {
         if(this.matching.equals(sequence2.getMatching())){
             return true;
         }
-        else if (this.matching.length() == sequence2.getMatching().length()){
-            int size = this.matching.length();
+        else if (this.size() == sequence2.size()){
+            int size = this.size();
             for (int i = 0; i < size; i++) {
                 switch(this.matching.charAt(i)) {
                     case '-':
@@ -147,6 +164,14 @@ public class ARN {
         }
     }
 
+    public String getSequence(){
+        return this.sequence;
+    }
+
+    public String getMatching(){
+        return this.matching;
+    }
+
     @Override
     public String toString(){
         String result = new String();
@@ -161,13 +186,13 @@ public class ARN {
 
     public static void main(String args[]) throws SizeNotCorrectException, MatchingNotCorrectException {
         ARN seq1 = new ARN();
-        seq1.setMatching("----");
+        seq1.setMatching("--()");
         seq1.setSequence("ATCG");
         System.out.println(seq1);
-        ARN seq2 = new ARN("TAGC","()--");
+/*        ARN seq2 = new ARN("TAGC","()--");
         System.out.println(seq1.equalsSequence(seq2));
         System.out.println(seq1.equalsMatching(seq2));
-        System.out.println(seq1.equals(seq2));
+        System.out.println(seq1.equals(seq2));*/
     }
 
 }
