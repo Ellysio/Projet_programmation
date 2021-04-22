@@ -231,7 +231,7 @@ public class ARN {
         seq1.setSequence("ATCGAAA");
         System.out.println(seq1);
         ARN seq2 = new ARN();
-//        seq2.setMatching("----()");
+        seq2.setMatching("----(-)");
         System.out.println("Contient ? " + seq1.contains(seq2));
 /*        System.out.println(seq1.equalsSequence(seq2));
         System.out.println(seq1.equalsMatching(seq2));

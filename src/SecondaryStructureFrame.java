@@ -1,5 +1,3 @@
-package Affichage;
-
 import javax.swing.*;
 
 public class SecondaryStructureFrame extends JFrame{
