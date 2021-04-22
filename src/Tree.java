@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-
-public class Tree  {
+public class Tree {
 
     // Attributes
     private String key;
@@ -8,10 +6,7 @@ public class Tree  {
     private Tree next_sibling;
 
     // Constructors
-
     public Tree(String key, Tree first_child, Tree next_sibling){
-
-
         this.key = key;
         this.first_child = first_child;
         this.next_sibling = next_sibling;
@@ -21,23 +16,40 @@ public class Tree  {
         this(key,null,null);
     }
 
-    public Tree(){ this(null,null,null); }
-    public String getKey(){
-        return this.key;
+    public Tree(){
+        this(null,null,null);
     }
 
-
-    public Tree getFirstChild(){
-        return this.first_child;
-    }
-
-    public Tree getNextSibling(){
-        return this.next_sibling;
-    }
-
-
+    // Methods
     /** @return A boolean which is equal to one if the tree is null, zero otherwise */
+    public boolean isEmpty(){
+        if (this.key == null && this.first_child == null && this.next_sibling == null){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 
+    /** @return A boolean which is equal to one if there is not child, zero otherwise */
+    public boolean notChild(){
+        if (this.first_child == null){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    /** @return A boolean which is equal to one if there is not next sibling, zero otherwise */
+    public boolean notSibling(){
+        if (this.next_sibling == null){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 
     public void putFirstChild(Tree tree){
         this.first_child = tree;
@@ -109,43 +121,17 @@ public class Tree  {
         }
     }
 
-    /** method to get tree from matching : return Tree
-     * @return**/
-    public void  getTreeFromMatching (String match ){
-        // an ArrayList where the Tree will be stored
-        ArrayList s = new ArrayList<>();
-        if (match!=null) {
-          s.add(key);
-            for (int i = 0; i < match.length(); i++) {
-
-                if (match.charAt(i) == '(') {
-                    //s.add(getFirstChild());
-                    s.add(key);
-
-                    if (getFirstChild() != null) {
-                        s.add(getKey());
-                    } else if (match.charAt(i) == '-') {
-
-
-
-
-
-                    }
-
-                }
-
-            }
-        }
-        System.out.println(s);
-
+    public String getKey(){
+        return this.key;
     }
 
+    public Tree getFirstChild(){
+        return this.first_child;
+    }
 
-    // afficher l'arbre selon le parcours suffix
-
-
-
-
+    public Tree getNextSibling(){
+        return this.next_sibling;
+    }
 
     public void prefix(){
         System.out.print(this.key + " ");
@@ -167,12 +153,7 @@ public class Tree  {
         }
     }
 
-
-
-
-
-
-    public static void main(String args[]) throws SizeNotCorrectException, MatchingNotCorrectException {
+    public static void main(String args[]){
 
         Tree c = new Tree("c",null,new Tree("d",new Tree("i", new Tree("j",null, new Tree ("k")),null),null));
         Tree b = new Tree("b", new Tree("e", null, new Tree ("f", null, new Tree ("g", null, new Tree ("h")))),c);
@@ -182,17 +163,12 @@ public class Tree  {
         T.suffix();
         System.out.println("\n" + "Taille : " + T.count());
         System.out.println("Profondeur : " + T.height());
-        System.out.println();
-        T.getTreeFromMatching("((------))");
 
-
-
-
+        // Création d'un arbre de structure secondaire
+        String Structure = "------)";
 
 
 
     }
-
-
 
 }

@@ -15,17 +15,17 @@ public class Window extends JFrame {
        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
        setContentPane(windowcontent());
     }
-   public  JPanel windowcontent(){
-        JPanel p = new JPanel();
-        p.setLayout(new FlowLayout());
 
-       JButton button= new JButton(new RnaSeconStruc(this,"Tap your  matching here!"));
+   public  JPanel windowcontent(){
+       JPanel p = new JPanel();
+       p.setLayout(new FlowLayout());
+       //JLabel l = new JLabel("welcome");
+       JButton button= new JButton(new RnaSeconStruc(this,"Tap your matching here!"));
        p.add(button);
        JTextField matching = new JTextField();
        matching.setColumns(100);
        p.add(matching);
-        return p;
-
-    }
+       return p;
+   }
 
 }
