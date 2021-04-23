@@ -226,9 +226,9 @@ public class ARN {
     }
 
     public static void main(String args[]) throws SizeNotCorrectException, MatchingNotCorrectException {
-        ARN seq1 = new ARN();
-        seq1.setMatching("----(-)");
-        seq1.setSequence("ATCGAAA");
+        ARN seq1 = new ARN("ATCGAAA","----(-)");
+        //seq1.setMatching("----(-)");
+        //seq1.setSequence("ATCGAAA");
         System.out.println(seq1);
         ARN seq2 = new ARN();
         seq2.setMatching("----(-)");
