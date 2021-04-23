@@ -205,6 +205,7 @@ public class ARN {
         }
     }
 
+
     public String getSequence(){
         return this.sequence;
     }
