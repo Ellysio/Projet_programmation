@@ -106,11 +106,11 @@ public class ARN {
             for (int i = 0; i < this.size(); i++){
                 switch(this.sequence.charAt(i)){
                     case 'A':
-                        if (sequence2.getSequence().charAt(i) != 'T'){
+                        if (sequence2.getSequence().charAt(i) != 'U'){
                             return false;
                         }
                         break;
-                    case 'T':
+                    case 'U':
                         if (sequence2.getSequence().charAt(i) != 'A'){
                             return false;
                         }

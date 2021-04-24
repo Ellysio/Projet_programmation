@@ -7,7 +7,7 @@ public class SecondaryStructureFrame extends JFrame{
     public SecondaryStructureFrame(){
         super();
         this.setTitle("ARN secondary structure comparison");
-        this.setSize(1200,500);
+        this.setSize(1200,400);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.getContentPane().add(new SecondaryStructurePanel());
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
