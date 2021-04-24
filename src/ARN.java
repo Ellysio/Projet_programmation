@@ -5,9 +5,12 @@ public class ARN {
     private String matching;
 
     // Constructors
-    public ARN(String sequence, String matching) throws SizeNotCorrectException, MatchingNotCorrectException {
+    public ARN(String sequence, String matching) throws SizeNotCorrectException, SequenceNotCorrectException, MatchingNotCorrectException {
         if (sequence.length() != matching.length()){
             throw new SizeNotCorrectException();
+        }
+        else if (SequenceNotCorrectException.SequenceIssue(sequence)){
+            throw new SequenceNotCorrectException();
         }
         else if (MatchingNotCorrectException.MatchingIssue(matching)){
             throw new MatchingNotCorrectException();
@@ -18,9 +21,14 @@ public class ARN {
         }
     }
 
-    public ARN(String sequence){
-        this.sequence = sequence;
-        this.matching = null;
+    public ARN(String sequence) throws SequenceNotCorrectException {
+        if (SequenceNotCorrectException.SequenceIssue(sequence)){
+            throw new SequenceNotCorrectException();
+        }
+        else {
+            this.sequence = sequence;
+            this.matching = null;
+        }
     }
 
     public ARN(){
@@ -39,11 +47,14 @@ public class ARN {
         }
     }
 
-    public void setSequence(String sequence) throws SizeNotCorrectException {
+    public void setSequence(String sequence) throws SizeNotCorrectException, SequenceNotCorrectException {
         if (this.matching != null) {
             if (this.matching.length() != sequence.length()) {
                 throw new SizeNotCorrectException();
             }
+        }
+        if (SequenceNotCorrectException.SequenceIssue(sequence)){
+            throw new SequenceNotCorrectException();
         }
         this.sequence = sequence;
     }
@@ -53,11 +64,13 @@ public class ARN {
             if (this.sequence.length() != matching.length()){
                 throw new SizeNotCorrectException();
             }
-            else if (MatchingNotCorrectException.MatchingIssue(matching)){
-                throw new MatchingNotCorrectException();
-            }
         }
-        this.matching = matching;
+        if (MatchingNotCorrectException.MatchingIssue(matching)){
+            throw new MatchingNotCorrectException();
+        }
+        else{
+            this.matching = matching;
+        }
     }
 
     public void removeSequence(){
@@ -225,9 +238,9 @@ public class ARN {
         return result;
     }
 
-    public static void main(String args[]) throws SizeNotCorrectException, MatchingNotCorrectException {
-        ARN seq1 = new ARN("ATCGAAA","----(-)");
-        //seq1.setMatching("----(-)");
+    public static void main(String args[]) throws SizeNotCorrectException, SequenceNotCorrectException, MatchingNotCorrectException {
+        ARN seq1 = new ARN("AUUGGGG");
+        seq1.setMatching("----(-)");
         //seq1.setSequence("ATCGAAA");
         System.out.println(seq1);
         ARN seq2 = new ARN();

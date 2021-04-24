@@ -28,7 +28,7 @@ public class SecondaryStructurePanel extends JPanel implements ActionListener {
             if (!tapPanelSequence1.getTextSequence().isEmpty()){
                 try {
                     sequence1.setSequence(tapPanelSequence1.getTextSequence());
-                } catch (SizeNotCorrectException sizeNotCorrectException) {
+                } catch (SizeNotCorrectException | SequenceNotCorrectException sizeNotCorrectException) {
                     sizeNotCorrectException.printStackTrace();
                 }
             }
@@ -44,7 +44,7 @@ public class SecondaryStructurePanel extends JPanel implements ActionListener {
             if (!tapPanelSequence2.getTextSequence().isEmpty()){
                 try {
                     sequence2.setSequence(tapPanelSequence2.getTextSequence());
-                } catch (SizeNotCorrectException sizeNotCorrectException) {
+                } catch (SizeNotCorrectException | SequenceNotCorrectException sizeNotCorrectException) {
                     sizeNotCorrectException.printStackTrace();
                 }
             }
@@ -57,15 +57,34 @@ public class SecondaryStructurePanel extends JPanel implements ActionListener {
                     matchingNotCorrectException.printStackTrace();
                 }
             }
-            System.out.println("sequence1 :\n" + sequence1);
-            System.out.println("sequence2 :\n" + sequence2);
-
-
-
+            if (sequence1.isEmpty()){
+                ResultFrame f = new ResultFrame("The first sequence is empty.",210);
+                f.setVisible(true);
+            }
+            else if (sequence2.isEmpty()){
+                ResultFrame f = new ResultFrame("The second sequence is empty.",210);
+                f.setVisible(true);
+            }
+            else if (sequence1.size() >= sequence2.size()){
+                if (sequence1.contains(sequence2)){
+                    ResultFrame f = new ResultFrame("The first sequence contains the second sequence.",310);
+                    f.setVisible(true);
+                }
+                else {
+                    ResultFrame f = new ResultFrame("The first sequence does not contain the second sequence.",360);
+                    f.setVisible(true);
+                }
+            }
+            else {
+                if (sequence2.contains(sequence1)) {
+                    ResultFrame f = new ResultFrame("The second sequence contains the first sequence.",310);
+                    f.setVisible(true);
+                } else {
+                    ResultFrame f = new ResultFrame("The second sequence does not contain the first sequence.",360);
+                    f.setVisible(true);
+                }
+            }
         }
-
     }
-
-
 
 }
