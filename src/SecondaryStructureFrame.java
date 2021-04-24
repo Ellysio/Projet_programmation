@@ -1,7 +1,9 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class SecondaryStructureFrame extends JFrame{
+public class SecondaryStructureFrame extends JFrame {
+
+    private SecondaryStructurePanel p;
 
     // Constructors
     public SecondaryStructureFrame(){
@@ -9,7 +11,8 @@ public class SecondaryStructureFrame extends JFrame{
         this.setTitle("ARN secondary structure comparison");
         this.setSize(1200,400);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.getContentPane().add(new SecondaryStructurePanel());
+        SecondaryStructurePanel p = new SecondaryStructurePanel();
+        this.getContentPane().add(p);
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width/2 - this.getWidth()/2, dim.height/2 - this.getHeight()/2 - 200);
     }

@@ -1,10 +1,9 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 
 public class ResultFrame extends JFrame {
 
-    ResultButton b = new ResultButton();
+    private ResultLabel l;
 
     // Constructors
     public ResultFrame(String message,int width,boolean error){
@@ -12,7 +11,7 @@ public class ResultFrame extends JFrame {
         this.setTitle("Comparison results");
         this.setSize(width,80);
         this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-        ResultLabel l = new ResultLabel(message,error);
+        l = new ResultLabel(message,error);
         this.getContentPane().add(l);
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width/2 - this.getWidth()/2, dim.height/2 - this.getHeight()/2 - 200);

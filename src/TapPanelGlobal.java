@@ -3,8 +3,8 @@ import java.awt.*;
 
 public class TapPanelGlobal extends JPanel {
 
-    TapPanel tapPanelSequence;
-    TapPanel tapPanelStructure;
+    private TapPanel tapPanelSequence;
+    private TapPanel tapPanelStructure;
 
     public TapPanelGlobal(int numero){
         super(new GridLayout(2,1));

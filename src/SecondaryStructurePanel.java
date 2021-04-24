@@ -5,9 +5,9 @@ import java.awt.event.ActionListener;
 
 public class SecondaryStructurePanel extends JPanel implements ActionListener {
 
-    TapPanelGlobal tapPanelSequence1 = new TapPanelGlobal(1);
-    TapPanelGlobal tapPanelSequence2 = new TapPanelGlobal(2);
-    SecondaryStructureButton b = new SecondaryStructureButton();
+    private TapPanelGlobal tapPanelSequence1 = new TapPanelGlobal(1);
+    private TapPanelGlobal tapPanelSequence2 = new TapPanelGlobal(2);
+    private SecondaryStructureButton b = new SecondaryStructureButton();
 
     public SecondaryStructurePanel(){
         super(new GridLayout(3,1));
@@ -19,10 +19,8 @@ public class SecondaryStructurePanel extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        System.out.println(e.getActionCommand());
         Object source = e.getSource();
         if (source == b){
-            System.out.println("test");
             ARN sequence1 = new ARN();
             ARN sequence2 = new ARN();
             if (!tapPanelSequence1.getTextSequence().isEmpty()){
