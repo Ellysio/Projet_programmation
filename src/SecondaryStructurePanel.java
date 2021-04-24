@@ -62,11 +62,11 @@ public class SecondaryStructurePanel extends JPanel implements ActionListener {
             }
 
             if (sequence1.isEmpty()){
-                ResultFrame f = new ResultFrame(" Error : the first sequence is empty.",220,true);
+                ResultFrame f = new ResultFrame(" Error : the first sequence is empty.",300,true);
                 f.setVisible(true);
             }
             else if (sequence2.isEmpty()){
-                ResultFrame f = new ResultFrame(" Error : the second sequence is empty.",220,true);
+                ResultFrame f = new ResultFrame(" Error : the second sequence is empty.",300,true);
                 f.setVisible(true);
             }
             else if (sequence1.size() >= sequence2.size()){
