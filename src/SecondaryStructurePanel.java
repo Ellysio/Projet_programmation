@@ -19,6 +19,7 @@ public class SecondaryStructurePanel extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        boolean exception = false;
         Object source = e.getSource();
         if (source == b){
             ARN sequence1 = new ARN();
@@ -27,39 +28,59 @@ public class SecondaryStructurePanel extends JPanel implements ActionListener {
                 try {
                     sequence1.setSequence(tapPanelSequence1.getTextSequence());
                 } catch (SizeNotCorrectException sizeNotCorrectException) {
+                    exception = true;
                     sizeNotCorrectException.printStackTrace();
                 }
                 catch (SequenceNotCorrectException sequenceNotCorrectException){
+                    exception = true;
                     sequenceNotCorrectException.printStackTrace();
+                } catch (MatchingNotCorrectException matchingNotCorrectException) {
+                    exception = true;
+                    matchingNotCorrectException.printStackTrace();
                 }
             }
             if (!tapPanelSequence1.getTextStructure().isEmpty()) {
                 try {
                     sequence1.setMatching(tapPanelSequence1.getTextStructure());
                 } catch (SizeNotCorrectException sizeNotCorrectException) {
+                    exception = true;
                     sizeNotCorrectException.printStackTrace();
                 } catch (MatchingNotCorrectException matchingNotCorrectException) {
+                    exception = true;
                     matchingNotCorrectException.printStackTrace();
                 }
             }
             if (!tapPanelSequence2.getTextSequence().isEmpty()){
                 try {
                     sequence2.setSequence(tapPanelSequence2.getTextSequence());
-                } catch (SizeNotCorrectException | SequenceNotCorrectException sizeNotCorrectException) {
+                } catch (SizeNotCorrectException sizeNotCorrectException) {
+                    exception = true;
                     sizeNotCorrectException.printStackTrace();
+                } catch (SequenceNotCorrectException sequenceNotCorrectException){
+                    exception = true;
+                    sequenceNotCorrectException.printStackTrace();
+                } catch (MatchingNotCorrectException matchingNotCorrectException){
+                    exception = true;
+                    matchingNotCorrectException.printStackTrace();
                 }
             }
             if (!tapPanelSequence2.getTextStructure().isEmpty()) {
                 try {
                     sequence2.setMatching(tapPanelSequence2.getTextStructure());
                 } catch (SizeNotCorrectException sizeNotCorrectException) {
+                    exception = true;
                     sizeNotCorrectException.printStackTrace();
                 } catch (MatchingNotCorrectException matchingNotCorrectException) {
+                    exception = true;
                     matchingNotCorrectException.printStackTrace();
                 }
             }
 
-            if (sequence1.isEmpty()){
+            if (exception == true){
+                ResultFrame f = new ResultFrame(" Error : the program raises an exception.",300,true);
+                f.setVisible(true);
+            }
+            else if (sequence1.isEmpty()){
                 ResultFrame f = new ResultFrame(" Error : the first sequence is empty.",300,true);
                 f.setVisible(true);
             }
