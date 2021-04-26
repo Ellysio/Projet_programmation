@@ -101,7 +101,7 @@ public class SecondaryStructurePanel extends JPanel implements ActionListener {
             }
             else {
                 if (sequence2.contains(sequence1)) {
-                    f = new ResultFrame(" The second RNAA strand contains the first RNA strand.",330,false);
+                    f = new ResultFrame(" The second RNA strand contains the first RNA strand.",330,false);
                     f.setVisible(true);
                 } else {
                     f = new ResultFrame(" The second RNA strand does not contain the first RNA strand.",380,false);
