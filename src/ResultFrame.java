@@ -17,4 +17,11 @@ public class ResultFrame extends JFrame {
         this.setLocation(dim.width/2 - this.getWidth()/2, dim.height/2 - this.getHeight()/2 - 200);
     }
 
+    public static void main(String[] args){
+
+        ResultFrame f = new ResultFrame("Bla",300,true);
+        f.setVisible(true);
+
+    }
+
 }
