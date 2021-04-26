@@ -190,8 +190,6 @@ public class BinaryTree {
         BinaryTree T = new BinaryTree();
         System.out.println("\nEst vide :" + T.isEmpty());
 
-
-
     }
 
 }

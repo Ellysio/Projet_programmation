@@ -5,9 +5,9 @@ import java.awt.event.ActionListener;
 
 public class SecondaryStructurePanel extends JPanel implements ActionListener {
 
-    private TapPanelGlobal tapPanelSequence1 = new TapPanelGlobal(1);
-    private TapPanelGlobal tapPanelSequence2 = new TapPanelGlobal(2);
-    private SecondaryStructureButton b = new SecondaryStructureButton();
+    private final TapPanelGlobal tapPanelSequence1 = new TapPanelGlobal(1);
+    private final TapPanelGlobal tapPanelSequence2 = new TapPanelGlobal(2);
+    private final SecondaryStructureButton b = new SecondaryStructureButton();
 
     public SecondaryStructurePanel(){
         super(new GridLayout(3,1));
@@ -76,34 +76,35 @@ public class SecondaryStructurePanel extends JPanel implements ActionListener {
                 }
             }
 
+            ResultFrame f = null;
             if (exception == true){
-                ResultFrame f = new ResultFrame(" Error : the program raises an exception.",300,true);
+                f = new ResultFrame(" Error : the program raises an exception.",300,true);
                 f.setVisible(true);
             }
             else if (sequence1.isEmpty()){
-                ResultFrame f = new ResultFrame(" Error : the first sequence is empty.",300,true);
+                f = new ResultFrame(" Error : the first RNA strand is empty.",300,true);
                 f.setVisible(true);
             }
             else if (sequence2.isEmpty()){
-                ResultFrame f = new ResultFrame(" Error : the second sequence is empty.",300,true);
+                f = new ResultFrame(" Error : the second RNA strand is empty.",300,true);
                 f.setVisible(true);
             }
             else if (sequence1.size() >= sequence2.size()){
                 if (sequence1.contains(sequence2)){
-                    ResultFrame f = new ResultFrame(" The first sequence contains the second sequence.",310,false);
+                    f = new ResultFrame(" The first RNA strand contains the second RNA strand.",330,false);
                     f.setVisible(true);
                 }
                 else {
-                    ResultFrame f = new ResultFrame(" The first sequence does not contain the second sequence.",360,false);
+                    f = new ResultFrame(" The first RNA strand does not contain the second RNA strand.",380,false);
                     f.setVisible(true);
                 }
             }
             else {
                 if (sequence2.contains(sequence1)) {
-                    ResultFrame f = new ResultFrame(" The second sequence contains the first sequence.",310,false);
+                    f = new ResultFrame(" The second RNAA strand contains the first RNA strand.",330,false);
                     f.setVisible(true);
                 } else {
-                    ResultFrame f = new ResultFrame(" The second sequence does not contain the first sequence.",360,false);
+                    f = new ResultFrame(" The second RNA strand does not contain the first RNA strand.",380,false);
                     f.setVisible(true);
                 }
             }
